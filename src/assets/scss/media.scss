@@ -1,0 +1,27 @@
+$sizes: ("xs":320px, "sm":576px, "md":768px, "lg":992px, "xl":1200px);
+
+@mixin media($minmax, $media) {
+  @each $size, $resolution in $sizes {
+    @if $media == $size {
+      @media only screen and (#{$minmax}-width: $resolution) {
+        @content;
+      }
+    }
+  }
+}
+
+.product__wrapper,
+.item__wrapper {   
+    @include media("max", "md") {
+        flex-direction: column;
+    }    
+}
+
+.item,
+.product-slider,
+.product-content {
+    @include media("max", "md") {
+        max-width: 100%;
+        margin: 10px 0
+     }
+ }
